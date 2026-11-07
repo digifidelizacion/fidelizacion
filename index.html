@@ -3,53 +3,85 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Prueba de conexión</title>
+  <title>Tarjeta de fidelización | Tres Corazones</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Great+Vibes&family=Dancing+Script:wght@500;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/estilos.css">
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="js/config.js"></script>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      margin: 0;
-      background: #f7f0f5;
-    }
-    .caja {
-      background: white;
-      padding: 30px;
-      border-radius: 16px;
-      text-align: center;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-      max-width: 320px;
-    }
-  </style>
 </head>
 <body>
-  <div class="caja">
-    <h2>Prueba de conexión</h2>
-    <p id="resultado">Conectando...</p>
-  </div>
+  <main class="panel">
 
-  <script>
-    async function probar() {
-      const resultado = document.getElementById("resultado");
-      const { data, error } = await db.from("negocio").select("*").single();
+    <header class="marca">
+      <h1 class="marca__neon">tres corazones</h1>
+      <div class="marca__corazon">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 3 4.5 6.7 4.5c2.1 0 3.6 1.1 4.3 2.6.7-1.5 2.2-2.6 4.3-2.6 3.7 0 5.8 3.9 4.3 7.3C19.5 16.4 12 21 12 21z"/>
+        </svg>
+      </div>
+      <p class="marca__by">by Briana Suárez</p>
+    </header>
 
-      if (error) {
-        resultado.textContent = "❌ Error: " + error.message;
-        return;
-      }
+    <section class="caja">
+      <h2 class="titulo">Tarjeta de fidelización</h2>
+      <p class="subtitulo">Acumula un sello en cada visita</p>
 
-      resultado.innerHTML =
-        "✅ Conectado<br><br>" +
-        "<b>Local:</b> " + data.nombre + "<br>" +
-        "<b>Sellos para premio:</b> " + data.sellos_meta + "<br>" +
-        "<b>Premio:</b> " + data.premio;
-    }
+      <div class="premio">
+        Completa <span id="metaTexto">10</span> sellos y recibe
+        <b id="premioTexto">50% de descuento en cualquier servicio</b>
+      </div>
 
-    probar();
-  </script>
+      <div class="pestanas">
+        <button type="button" class="pestana activa" id="tabIngresar">Ingresar</button>
+        <button type="button" class="pestana" id="tabRegistro">Registrarme</button>
+      </div>
+
+      <!-- Iniciar sesión -->
+      <form id="formIngresar" novalidate>
+        <div class="campo">
+          <label for="ingEmail">Correo</label>
+          <input type="email" id="ingEmail" autocomplete="email" placeholder="tucorreo@gmail.com">
+        </div>
+        <div class="campo">
+          <label for="ingPassword">Contraseña</label>
+          <input type="password" id="ingPassword" autocomplete="current-password" placeholder="Tu contraseña">
+        </div>
+        <button type="submit" class="btn">Ver mi tarjeta</button>
+      </form>
+
+      <!-- Registro -->
+      <form id="formRegistro" class="oculto" novalidate>
+        <div class="campo">
+          <label for="regNombre">Nombre</label>
+          <input type="text" id="regNombre" autocomplete="name" placeholder="Tu nombre">
+        </div>
+        <div class="campo">
+          <label for="regCelular">Celular</label>
+          <input type="tel" id="regCelular" inputmode="numeric" maxlength="10" autocomplete="tel" placeholder="3001234567">
+        </div>
+        <div class="campo">
+          <label for="regEmail">Correo</label>
+          <input type="email" id="regEmail" autocomplete="email" placeholder="tucorreo@gmail.com">
+        </div>
+        <div class="campo">
+          <label for="regPassword">Contraseña</label>
+          <input type="password" id="regPassword" autocomplete="new-password" placeholder="Mínimo 6 caracteres">
+        </div>
+        <div class="campo">
+          <label for="regConfirmar">Confirmar contraseña</label>
+          <input type="password" id="regConfirmar" autocomplete="new-password" placeholder="Repite la contraseña">
+        </div>
+        <button type="submit" class="btn">Crear mi tarjeta</button>
+      </form>
+
+      <p id="mensaje" class="mensaje" aria-live="polite"></p>
+    </section>
+
+    <p class="pie">Diagonal 47 A sur #53-74, Bogotá · @trescorazones.bs</p>
+  </main>
+
+  <script src="js/auth.js"></script>
 </body>
 </html>
