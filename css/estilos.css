@@ -1,191 +1,323 @@
-/* ===== Colores de la marca (cámbialos aquí) ===== */
+/* =========================================================
+   TRES CORAZONES by Briana Suárez - App de fidelización
+   Misma paleta y estilo de la página web
+   ========================================================= */
 :root {
-  --fondo: #1b0f1d;
-  --fondo-2: #2e1734;
-  --rosa: #ff5fa8;
-  --rosa-oscuro: #c2185b;
-  --rosa-suave: #f9d3e5;
-  --dorado: #d4af6a;
-  --crema: #fff8f4;
-  --texto: #3a2a33;
-  --gris: #8a7a83;
-  --error: #d6336c;
-  --ok: #2f9e6e;
+  /* Colores de marca (iguales a la web) */
+  --vino-noche: #1f0a0f;
+  --vino-oscuro: #2e0f17;
+  --vino: #4a1823;
+  --vino-medio: #6a2433;
+  --rosa-vino: #8c3a4a;
+  --rojo-corazon: #ff2d3d;
+  --dorado: #d9a46a;
+  --dorado-claro: #f2cf9b;
+  --neon: #ffd9a3;
+  --neon-glow: #ff9f45;
+  --texto: #f6e7da;
+  --texto-suave: #cfb3a6;
+  --borde: rgba(217, 164, 106, 0.35);
+  --error: #ff9a9a;
+  --ok: #7ee2a0;
+
+  /* Tipografías */
+  --f-titulo: 'Cinzel', serif;
+  --f-script: 'Great Vibes', cursive;
+  --f-neon: 'Dancing Script', cursive;
+  --f-texto: 'Montserrat', sans-serif;
+
+  /* Medidas */
+  --radio: 14px;
+  --transicion: 0.35s ease;
 }
 
-* {
-  box-sizing: border-box;
+/* ================= BASE ================= */
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-  font-family: 'Montserrat', sans-serif;
-  min-height: 100vh;
-  background: radial-gradient(circle at 50% 0%, var(--fondo-2), var(--fondo) 70%);
+  font-family: var(--f-texto);
+  font-weight: 300;
+  line-height: 1.6;
   color: var(--texto);
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 24px 16px;
+  padding: 30px 16px;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(255, 159, 69, 0.12), transparent 55%),
+    linear-gradient(180deg, var(--vino-noche) 0%, var(--vino) 60%, var(--vino-oscuro) 100%);
+  background-attachment: fixed;
+}
+
+a {
+  color: var(--dorado);
+  text-decoration: none;
 }
 
 .panel {
   width: 100%;
-  max-width: 400px;
+  max-width: 420px;
 }
 
-/* ===== Letrero de neón ===== */
+/* ================= LETRERO DE NEÓN ================= */
 .marca {
   text-align: center;
-  margin-bottom: 22px;
+  margin-bottom: 26px;
+}
+
+.marca__logo {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 14px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--borde);
+}
+
+.marca__letrero {
+  position: relative;
+  display: inline-block;
+  padding-top: 10px;
 }
 
 .marca__neon {
-  font-family: 'Dancing Script', cursive;
-  font-size: 2.6rem;
-  font-weight: 700;
-  color: #fff;
-  text-shadow: 0 0 6px var(--rosa), 0 0 14px var(--rosa), 0 0 28px var(--rosa);
+  font-family: var(--f-texto);
+  font-weight: 300;
+  font-size: 2.4rem;
+  line-height: 1.1;
+  color: var(--neon);
+  text-shadow:
+    0 0 4px var(--neon),
+    0 0 14px var(--neon-glow),
+    0 0 35px var(--neon-glow),
+    0 0 60px rgba(255, 120, 40, 0.6);
+  animation: flicker 5s infinite;
 }
 
-.marca__corazon svg {
-  width: 28px;
+.marca__corazon {
+  position: absolute;
+  top: -14px;
+  right: -26px;
+  width: 38px;
   fill: none;
-  stroke: var(--rosa);
-  stroke-width: 1.8;
-  filter: drop-shadow(0 0 6px var(--rosa));
+  stroke: var(--rojo-corazon);
+  stroke-width: 1.6;
+  filter: drop-shadow(0 0 4px var(--rojo-corazon)) drop-shadow(0 0 14px var(--rojo-corazon));
+  animation: heartbeat 1.8s ease-in-out infinite;
 }
 
 .marca__by {
-  font-family: 'Great Vibes', cursive;
-  color: var(--dorado);
-  font-size: 1.5rem;
+  font-family: var(--f-neon);
+  font-weight: 700;
+  font-size: 1.8rem;
+  color: var(--neon);
+  text-shadow:
+    0 0 4px var(--neon),
+    0 0 14px var(--neon-glow),
+    0 0 30px var(--neon-glow);
+  transform: rotate(-3deg);
 }
 
-/* ===== Caja principal ===== */
+/* ================= CAJA PRINCIPAL ================= */
 .caja {
-  background: var(--crema);
-  border-radius: 20px;
-  padding: 28px 24px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
-  border-top: 4px solid var(--dorado);
+  background: var(--vino-oscuro);
+  border: 1px solid var(--borde);
+  border-radius: 22px;
+  padding: 32px 24px;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.45);
+}
+
+.etiqueta {
+  text-align: center;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--dorado);
+  margin-bottom: 4px;
 }
 
 .titulo {
-  font-family: 'Cinzel', serif;
+  font-family: var(--f-titulo);
+  font-weight: 400;
   text-align: center;
-  font-size: 1.15rem;
-  letter-spacing: 2px;
-  margin-bottom: 6px;
+  font-size: 1.35rem;
+  line-height: 1.3;
 }
 
-.subtitulo {
-  text-align: center;
-  font-size: 0.85rem;
-  color: var(--gris);
-  margin-bottom: 18px;
+.titulo .script {
+  display: block;
+  font-family: var(--f-script);
+  font-size: 2.3rem;
+  color: var(--dorado-claro);
+  line-height: 1.2;
 }
 
+/* Divisor con corazón (igual a la web) */
+.divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 14px 0 18px;
+  color: var(--rojo-corazon);
+}
+
+.divider::before,
+.divider::after {
+  content: '';
+  width: 70px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--dorado));
+}
+
+.divider::after {
+  background: linear-gradient(90deg, var(--dorado), transparent);
+}
+
+/* ================= PREMIO ================= */
 .premio {
-  background: linear-gradient(135deg, var(--rosa), var(--rosa-oscuro));
-  color: #fff;
   text-align: center;
-  border-radius: 14px;
-  padding: 12px;
+  padding: 16px 14px;
+  margin-bottom: 22px;
+  border-radius: var(--radio);
+  border: 1px solid var(--borde);
+  background: linear-gradient(90deg, var(--vino-medio), var(--rosa-vino), var(--vino-medio));
+  color: var(--texto);
   font-size: 0.85rem;
-  margin-bottom: 20px;
 }
 
 .premio b {
   display: block;
+  margin-top: 4px;
+  font-family: var(--f-titulo);
+  font-weight: 600;
   font-size: 1.05rem;
-  margin-top: 2px;
+  letter-spacing: 1px;
+  color: var(--dorado-claro);
 }
 
-/* ===== Pestañas ===== */
+/* ================= PESTAÑAS ================= */
 .pestanas {
   display: flex;
-  background: var(--rosa-suave);
-  border-radius: 999px;
+  gap: 4px;
   padding: 4px;
-  margin-bottom: 18px;
+  margin-bottom: 20px;
+  border: 1px solid var(--borde);
+  border-radius: 40px;
 }
 
 .pestana {
   flex: 1;
-  border: none;
-  background: none;
   padding: 10px;
-  border-radius: 999px;
-  font-family: inherit;
-  font-weight: 600;
-  color: var(--texto);
+  border: none;
+  border-radius: 40px;
+  background: transparent;
+  color: var(--texto-suave);
+  font-family: var(--f-texto);
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 1px;
   cursor: pointer;
+  transition: background var(--transicion), color var(--transicion);
 }
 
 .pestana.activa {
-  background: #fff;
-  color: var(--rosa-oscuro);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(135deg, var(--dorado), var(--dorado-claro));
+  color: var(--vino-oscuro);
+  font-weight: 600;
 }
 
-/* ===== Formularios ===== */
+/* ================= FORMULARIOS ================= */
 .campo {
-  margin-bottom: 14px;
+  margin-bottom: 16px;
 }
 
 .campo label {
   display: block;
-  font-size: 0.8rem;
-  font-weight: 600;
-  margin-bottom: 5px;
+  margin-bottom: 6px;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+  color: var(--dorado);
 }
 
 .campo input {
   width: 100%;
-  padding: 12px 14px;
-  border: 1.5px solid #e6d6de;
-  border-radius: 12px;
-  font-family: inherit;
+  padding: 13px 16px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--borde);
+  border-radius: 10px;
+  color: var(--texto);
+  font-family: var(--f-texto);
   font-size: 1rem;
-  background: #fff;
+  transition: border-color var(--transicion), box-shadow var(--transicion);
+}
+
+.campo input::placeholder {
+  color: rgba(207, 179, 166, 0.6);
 }
 
 .campo input:focus {
   outline: none;
-  border-color: var(--rosa);
-  box-shadow: 0 0 0 3px rgba(255, 95, 168, 0.2);
+  border-color: var(--dorado);
+  box-shadow: 0 0 0 3px rgba(217, 164, 106, 0.15);
 }
 
+/* ================= BOTONES ================= */
 .btn {
+  display: block;
   width: 100%;
-  padding: 13px;
-  border: none;
-  border-radius: 999px;
-  background: var(--rosa);
-  color: #fff;
-  font-family: inherit;
+  margin-top: 6px;
+  padding: 14px 34px;
+  border: 1px solid transparent;
+  border-radius: 40px;
+  background: linear-gradient(135deg, var(--dorado), var(--dorado-claro));
+  color: var(--vino-oscuro);
+  font-family: var(--f-texto);
+  font-size: 0.95rem;
   font-weight: 600;
-  font-size: 1rem;
+  letter-spacing: 1px;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: transform var(--transicion), box-shadow var(--transicion);
 }
 
 .btn:hover {
-  background: var(--rosa-oscuro);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 28px rgba(217, 164, 106, 0.35);
+}
+
+.btn:focus-visible,
+.pestana:focus-visible {
+  outline: 2px solid var(--neon);
+  outline-offset: 2px;
 }
 
 .btn:disabled {
   opacity: 0.6;
   cursor: wait;
+  transform: none;
 }
 
+.btn--outline {
+  background: transparent;
+  color: var(--dorado);
+  border-color: var(--dorado);
+}
+
+/* ================= MENSAJES ================= */
 .mensaje {
-  min-height: 20px;
+  min-height: 22px;
+  margin-top: 14px;
   font-size: 0.85rem;
   text-align: center;
-  margin-top: 12px;
 }
 
 .mensaje.error {
@@ -200,10 +332,42 @@ body {
   display: none;
 }
 
+/* ================= PIE ================= */
 .pie {
+  margin-top: 22px;
   text-align: center;
-  color: var(--rosa-suave);
   font-size: 0.75rem;
-  margin-top: 18px;
-  opacity: 0.8;
+  color: rgba(207, 179, 166, 0.75);
+}
+
+.pie a {
+  color: var(--dorado);
+}
+
+/* ================= ANIMACIONES (iguales a la web) ================= */
+@keyframes flicker {
+  0%, 90%, 100% { opacity: 1; }
+  92% { opacity: 0.55; }
+  94% { opacity: 1; }
+  96% { opacity: 0.7; }
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  15% { transform: scale(1.15); }
+  30% { transform: scale(1); }
+  45% { transform: scale(1.1); }
+}
+
+@media (max-width: 360px) {
+  .marca__neon { font-size: 2rem; }
+  .marca__by { font-size: 1.5rem; }
+  .caja { padding: 26px 18px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+  }
 }
