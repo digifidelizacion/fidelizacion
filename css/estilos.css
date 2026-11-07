@@ -1,0 +1,209 @@
+/* ===== Colores de la marca (cámbialos aquí) ===== */
+:root {
+  --fondo: #1b0f1d;
+  --fondo-2: #2e1734;
+  --rosa: #ff5fa8;
+  --rosa-oscuro: #c2185b;
+  --rosa-suave: #f9d3e5;
+  --dorado: #d4af6a;
+  --crema: #fff8f4;
+  --texto: #3a2a33;
+  --gris: #8a7a83;
+  --error: #d6336c;
+  --ok: #2f9e6e;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  min-height: 100vh;
+  background: radial-gradient(circle at 50% 0%, var(--fondo-2), var(--fondo) 70%);
+  color: var(--texto);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 24px 16px;
+}
+
+.panel {
+  width: 100%;
+  max-width: 400px;
+}
+
+/* ===== Letrero de neón ===== */
+.marca {
+  text-align: center;
+  margin-bottom: 22px;
+}
+
+.marca__neon {
+  font-family: 'Dancing Script', cursive;
+  font-size: 2.6rem;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 0 0 6px var(--rosa), 0 0 14px var(--rosa), 0 0 28px var(--rosa);
+}
+
+.marca__corazon svg {
+  width: 28px;
+  fill: none;
+  stroke: var(--rosa);
+  stroke-width: 1.8;
+  filter: drop-shadow(0 0 6px var(--rosa));
+}
+
+.marca__by {
+  font-family: 'Great Vibes', cursive;
+  color: var(--dorado);
+  font-size: 1.5rem;
+}
+
+/* ===== Caja principal ===== */
+.caja {
+  background: var(--crema);
+  border-radius: 20px;
+  padding: 28px 24px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+  border-top: 4px solid var(--dorado);
+}
+
+.titulo {
+  font-family: 'Cinzel', serif;
+  text-align: center;
+  font-size: 1.15rem;
+  letter-spacing: 2px;
+  margin-bottom: 6px;
+}
+
+.subtitulo {
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--gris);
+  margin-bottom: 18px;
+}
+
+.premio {
+  background: linear-gradient(135deg, var(--rosa), var(--rosa-oscuro));
+  color: #fff;
+  text-align: center;
+  border-radius: 14px;
+  padding: 12px;
+  font-size: 0.85rem;
+  margin-bottom: 20px;
+}
+
+.premio b {
+  display: block;
+  font-size: 1.05rem;
+  margin-top: 2px;
+}
+
+/* ===== Pestañas ===== */
+.pestanas {
+  display: flex;
+  background: var(--rosa-suave);
+  border-radius: 999px;
+  padding: 4px;
+  margin-bottom: 18px;
+}
+
+.pestana {
+  flex: 1;
+  border: none;
+  background: none;
+  padding: 10px;
+  border-radius: 999px;
+  font-family: inherit;
+  font-weight: 600;
+  color: var(--texto);
+  cursor: pointer;
+}
+
+.pestana.activa {
+  background: #fff;
+  color: var(--rosa-oscuro);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* ===== Formularios ===== */
+.campo {
+  margin-bottom: 14px;
+}
+
+.campo label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.campo input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1.5px solid #e6d6de;
+  border-radius: 12px;
+  font-family: inherit;
+  font-size: 1rem;
+  background: #fff;
+}
+
+.campo input:focus {
+  outline: none;
+  border-color: var(--rosa);
+  box-shadow: 0 0 0 3px rgba(255, 95, 168, 0.2);
+}
+
+.btn {
+  width: 100%;
+  padding: 13px;
+  border: none;
+  border-radius: 999px;
+  background: var(--rosa);
+  color: #fff;
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn:hover {
+  background: var(--rosa-oscuro);
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+.mensaje {
+  min-height: 20px;
+  font-size: 0.85rem;
+  text-align: center;
+  margin-top: 12px;
+}
+
+.mensaje.error {
+  color: var(--error);
+}
+
+.mensaje.ok {
+  color: var(--ok);
+}
+
+.oculto {
+  display: none;
+}
+
+.pie {
+  text-align: center;
+  color: var(--rosa-suave);
+  font-size: 0.75rem;
+  margin-top: 18px;
+  opacity: 0.8;
+}
