@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#1f0a0f">
+  <title>Mi tarjeta | Tres Corazones by Briana Suárez</title>
+  <link rel="icon" href="logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Great+Vibes&family=Dancing+Script:wght@500;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/estilos.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script src="js/config.js"></script>
+</head>
+<body>
+  <main class="panel">
+
+    <header class="marca">
+      <img src="logo.png" alt="Logo Tres Corazones" class="marca__logo" onerror="this.remove()">
+      <div class="marca__letrero">
+        <h1 class="marca__neon">tres corazones</h1>
+        <svg class="marca__corazon" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 3 4.5 6.7 4.5c2.1 0 3.6 1.1 4.3 2.6.7-1.5 2.2-2.6 4.3-2.6 3.7 0 5.8 3.9 4.3 7.3C19.5 16.4 12 21 12 21z"/>
+        </svg>
+        <p class="marca__by">by Briana Suarez</p>
+      </div>
+    </header>
+
+    <section class="caja">
+      <p class="etiqueta">Tarjeta de fidelización</p>
+      <p class="saludo">Hola, <b id="nombre">...</b></p>
+      <div class="divider" aria-hidden="true"><span>&#9829;</span></div>
+
+      <p class="contador">
+        <span id="sellosNum">0</span><small> / <span id="metaNum">10</span></small>
+      </p>
+      <p class="contador-texto" id="faltan">Cargando tu tarjeta...</p>
+
+      <div class="sellos" id="sellos" role="img" aria-label="Sellos"></div>
+
+      <div class="premio-listo oculto" id="premioListo">
+        <p class="etiqueta">¡Felicitaciones!</p>
+        Ganaste
+        <b id="premioTexto2">50% de descuento en cualquier servicio</b>
+      </div>
+
+      <div class="premio" id="premioInfo">
+        Al completar los sellos recibes
+        <b id="premioTexto">50% de descuento en cualquier servicio</b>
+      </div>
+
+      <div class="qr-caja">
+        <p id="qrInstruccion">Muestra este código al personal para recibir tu sello</p>
+        <div class="qr" id="qr"></div>
+        <p class="qr-tiempo" id="qrTiempo" aria-live="polite">Generando código...</p>
+      </div>
+
+      <div class="historial">
+        <h3>Tus últimas visitas</h3>
+        <ul id="historial"></ul>
+      </div>
+
+      <p id="mensaje" class="mensaje" aria-live="polite"></p>
+      <button type="button" class="btn btn--outline" id="btnSalir">Cerrar sesión</button>
+    </section>
+
+    <p class="pie">
+      Diagonal 47 A sur #53-74, Bogotá ·
+      <a href="https://www.instagram.com/trescorazones.bs/" target="_blank" rel="noopener noreferrer">@trescorazones.bs</a>
+    </p>
+  </main>
+
+  <div class="aviso" id="aviso" role="status" aria-live="polite"></div>
+
+  <script src="js/tarjeta.js"></script>
+</body>
+</html>
