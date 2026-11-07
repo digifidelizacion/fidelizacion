@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#1f0a0f">
+  <title>Panel del personal | Tres Corazones</title>
+  <link rel="icon" href="logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Great+Vibes&family=Dancing+Script:wght@500;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/estilos.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
+  <script src="js/config.js"></script>
+</head>
+<body>
+  <main class="panel panel--ancho">
+
+    <header class="marca">
+      <div class="marca__letrero">
+        <h1 class="marca__neon">tres corazones</h1>
+        <svg class="marca__corazon" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 3 4.5 6.7 4.5c2.1 0 3.6 1.1 4.3 2.6.7-1.5 2.2-2.6 4.3-2.6 3.7 0 5.8 3.9 4.3 7.3C19.5 16.4 12 21 12 21z"/>
+        </svg>
+        <p class="marca__by">panel del personal</p>
+      </div>
+    </header>
+
+    <!-- Escáner -->
+    <section class="caja">
+      <div class="barra">
+        <span>Hola, <b id="nombreStaff">...</b></span>
+        <button type="button" class="btn btn--outline btn--chico" id="btnSalir">Salir</button>
+      </div>
+      <h2 class="seccion-titulo">Escanear tarjeta</h2>
+      <div id="lector"></div>
+      <button type="button" class="btn" id="btnEscanear">Escanear QR</button>
+      <p id="msgEscaner" class="mensaje" aria-live="polite"></p>
+    </section>
+
+    <!-- Ficha de la clienta escaneada -->
+    <section class="caja oculto" id="cajaFicha">
+      <div class="ficha">
+        <p class="etiqueta">Clienta</p>
+        <p class="ficha__nombre" id="fichaNombre">...</p>
+        <p class="ficha__dato" id="fichaDato"></p>
+        <p class="contador-texto" id="fichaConteo"></p>
+        <div class="mini-sellos" id="fichaSellos" aria-hidden="true"></div>
+      </div>
+      <div class="acciones">
+        <button type="button" class="btn" id="btnSello">♥ Sumar sello</button>
+        <button type="button" class="btn oculto" id="btnCanjear">★ Redimir premio</button>
+        <button type="button" class="btn btn--outline" id="btnCerrarFicha">Cerrar</button>
+      </div>
+      <p id="msgFicha" class="mensaje" aria-live="polite"></p>
+    </section>
+
+    <!-- Clientas -->
+    <section class="caja">
+      <h2 class="seccion-titulo">Clientas</h2>
+      <div class="resumen">
+        <div><b id="totClientas">0</b><small>Clientas</small></div>
+        <div><b id="totCompletas">0</b><small>Por redimir</small></div>
+        <div><b id="totPremios">0</b><small>Premios dados</small></div>
+      </div>
+      <div class="campo buscador">
+        <label for="buscar">Buscar por nombre o celular</label>
+        <input type="search" id="buscar" placeholder="Ej: Laura o 300...">
+      </div>
+      <ul class="lista" id="lista"></ul>
+      <p id="msgLista" class="mensaje" aria-live="polite"></p>
+    </section>
+
+    <!-- Configuración (solo admin) -->
+    <section class="caja oculto" id="cajaConfig">
+      <h2 class="seccion-titulo">Configuración del local</h2>
+      <form id="formConfig" novalidate>
+        <div class="campo">
+          <label for="cfgNombre">Nombre del local</label>
+          <input type="text" id="cfgNombre">
+        </div>
+        <div class="campo">
+          <label for="cfgPremio">Premio</label>
+          <input type="text" id="cfgPremio">
+        </div>
+        <div class="campo">
+          <label for="cfgMeta">Sellos para el premio</label>
+          <input type="number" id="cfgMeta" min="1" max="20">
+        </div>
+        <button type="submit" class="btn">Guardar cambios</button>
+      </form>
+      <p id="msgConfig" class="mensaje" aria-live="polite"></p>
+    </section>
+
+  </main>
+
+  <script src="js/admin.js"></script>
+</body>
+</html>
