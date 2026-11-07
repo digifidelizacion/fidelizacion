@@ -9,6 +9,8 @@ let sellosActuales = null;
 let qr = null;
 let segundos = 0;
 let generando = false;
+let avisoPendiente = null;
+let avisoTimer = null;
 
 const el = (id) => document.getElementById(id);
 
@@ -17,12 +19,19 @@ function mostrar(texto, tipo = "error") {
   el("mensaje").className = "mensaje " + tipo;
 }
 
+// ===== Aviso flotante =====
 function avisar(texto) {
+  // Si la tarjeta no está a la vista, el aviso espera
+  if (document.hidden) {
+    avisoPendiente = texto;
+    return;
+  }
   const aviso = el("aviso");
   aviso.textContent = texto;
   aviso.classList.add("visible");
   if (navigator.vibrate) navigator.vibrate(200);
-  setTimeout(() => aviso.classList.remove("visible"), 3500);
+  clearTimeout(avisoTimer);
+  avisoTimer = setTimeout(() => aviso.classList.remove("visible"), 4000);
 }
 
 // ===== Dibujar la tarjeta =====
@@ -83,12 +92,13 @@ async function cargarCliente() {
     window.location.href = "index.html";
     return;
   }
+  mostrar("");
   render(data);
 }
 
 // ===== QR personal =====
 async function nuevoToken() {
-  if (generando) return;
+  if (generando || !qr) return;
   generando = true;
   const { data, error } = await db.rpc("generar_token");
   generando = false;
@@ -168,9 +178,13 @@ function escucharCambios() {
     .subscribe();
 }
 
-// ===== Al volver a la app =====
+// ===== Al volver a la tarjeta =====
 document.addEventListener("visibilitychange", () => {
   if (!document.hidden && usuario) {
+    if (avisoPendiente) {
+      avisar(avisoPendiente);
+      avisoPendiente = null;
+    }
     cargarCliente();
     nuevoToken();
     cargarHistorial();
