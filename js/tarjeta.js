@@ -9,29 +9,12 @@ let sellosActuales = null;
 let qr = null;
 let segundos = 0;
 let generando = false;
-let avisoPendiente = null;
-let avisoTimer = null;
 
 const el = (id) => document.getElementById(id);
 
 function mostrar(texto, tipo = "error") {
   el("mensaje").textContent = texto;
   el("mensaje").className = "mensaje " + tipo;
-}
-
-// ===== Aviso flotante =====
-function avisar(texto) {
-  // Si la tarjeta no está a la vista, el aviso espera
-  if (document.hidden) {
-    avisoPendiente = texto;
-    return;
-  }
-  const aviso = el("aviso");
-  aviso.textContent = texto;
-  aviso.classList.add("visible");
-  if (navigator.vibrate) navigator.vibrate(200);
-  clearTimeout(avisoTimer);
-  avisoTimer = setTimeout(() => aviso.classList.remove("visible"), 4000);
 }
 
 // ===== Dibujar la tarjeta =====
@@ -49,6 +32,7 @@ function render(cliente) {
   for (let i = 1; i <= meta; i++) {
     const sello = document.createElement("div");
     sello.className = "sello" + (i <= sellos ? " lleno" : "");
+    // Animación solo en los corazones nuevos
     if (anterior !== null && i > anterior && i <= sellos) {
       sello.classList.add("nuevo");
     }
@@ -67,14 +51,6 @@ function render(cliente) {
   el("qrInstruccion").textContent = completa
     ? "Muestra este código al personal para redimir tu premio"
     : "Muestra este código al personal para recibir tu sello";
-
-  if (anterior !== null) {
-    if (sellos > anterior) {
-      avisar(completa ? "¡Completaste tu tarjeta! 🎉" : "¡Sumaste un sello! ♥");
-    } else if (sellos < anterior) {
-      avisar("Premio redimido. ¡Empieza una nueva tarjeta!");
-    }
-  }
 }
 
 async function cargarCliente() {
@@ -181,10 +157,6 @@ function escucharCambios() {
 // ===== Al volver a la tarjeta =====
 document.addEventListener("visibilitychange", () => {
   if (!document.hidden && usuario) {
-    if (avisoPendiente) {
-      avisar(avisoPendiente);
-      avisoPendiente = null;
-    }
     cargarCliente();
     nuevoToken();
     cargarHistorial();
