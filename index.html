@@ -3,7 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tarjeta de fidelización | Tres Corazones</title>
+  <meta name="theme-color" content="#1f0a0f">
+  <title>Tarjeta de fidelización | Tres Corazones by Briana Suárez</title>
+  <link rel="icon" href="images/logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Great+Vibes&family=Dancing+Script:wght@500;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -14,19 +16,22 @@
 <body>
   <main class="panel">
 
+    <!-- Letrero de neón (igual a la web) -->
     <header class="marca">
-      <h1 class="marca__neon">tres corazones</h1>
-      <div class="marca__corazon">
-        <svg viewBox="0 0 24 24" aria-hidden="true">
+      <img src="images/logo.png" alt="Logo Tres Corazones" class="marca__logo" onerror="this.remove()">
+      <div class="marca__letrero">
+        <h1 class="marca__neon">tres corazones</h1>
+        <svg class="marca__corazon" viewBox="0 0 24 24" aria-hidden="true">
           <path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 3 4.5 6.7 4.5c2.1 0 3.6 1.1 4.3 2.6.7-1.5 2.2-2.6 4.3-2.6 3.7 0 5.8 3.9 4.3 7.3C19.5 16.4 12 21 12 21z"/>
         </svg>
+        <p class="marca__by">by Briana Suarez</p>
       </div>
-      <p class="marca__by">by Briana Suárez</p>
     </header>
 
     <section class="caja">
-      <h2 class="titulo">Tarjeta de fidelización</h2>
-      <p class="subtitulo">Acumula un sello en cada visita</p>
+      <p class="etiqueta">Club de fidelización</p>
+      <h2 class="titulo">Tu tarjeta <span class="script">Tres Corazones</span></h2>
+      <div class="divider" aria-hidden="true"><span>&#9829;</span></div>
 
       <div class="premio">
         Completa <span id="metaTexto">10</span> sellos y recibe
@@ -79,7 +84,10 @@
       <p id="mensaje" class="mensaje" aria-live="polite"></p>
     </section>
 
-    <p class="pie">Diagonal 47 A sur #53-74, Bogotá · @trescorazones.bs</p>
+    <p class="pie">
+      Diagonal 47 A sur #53-74, Bogotá ·
+      <a href="https://www.instagram.com/trescorazones.bs/" target="_blank" rel="noopener noreferrer">@trescorazones.bs</a>
+    </p>
   </main>
 
   <script src="js/auth.js"></script>
