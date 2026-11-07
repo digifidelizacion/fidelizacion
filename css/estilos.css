@@ -540,3 +540,164 @@ a {
   z-index: 10;
   max-width: 90%;
  
+/* ================= PANEL DEL PERSONAL ================= */
+.panel--ancho {
+  max-width: 480px;
+}
+
+.caja + .caja {
+  margin-top: 18px;
+}
+
+.seccion-titulo {
+  font-family: var(--f-titulo);
+  font-weight: 400;
+  font-size: 1rem;
+  letter-spacing: 2px;
+  text-align: center;
+  color: var(--dorado-claro);
+  margin-bottom: 14px;
+}
+
+.barra {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 18px;
+  font-size: 0.85rem;
+  color: var(--texto-suave);
+}
+
+.barra b {
+  color: var(--dorado-claro);
+  font-weight: 500;
+}
+
+.btn--chico {
+  width: auto;
+  margin-top: 0;
+  padding: 8px 16px;
+  font-size: 0.8rem;
+}
+
+/* Lector de QR */
+#lector {
+  width: 100%;
+  overflow: hidden;
+  border-radius: var(--radio);
+  margin-bottom: 12px;
+}
+
+#lector video {
+  border-radius: var(--radio);
+}
+
+/* Ficha de la clienta escaneada */
+.ficha {
+  text-align: center;
+}
+
+.ficha__nombre {
+  font-family: var(--f-titulo);
+  font-size: 1.2rem;
+  color: var(--dorado-claro);
+}
+
+.ficha__dato {
+  font-size: 0.82rem;
+  color: var(--texto-suave);
+  margin-bottom: 12px;
+}
+
+.mini-sellos {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 5px;
+  margin: 12px 0 16px;
+}
+
+.mini-sellos span {
+  aspect-ratio: 1;
+  border: 1px solid var(--borde);
+  border-radius: 50%;
+}
+
+.mini-sellos span.lleno {
+  background: var(--rojo-corazon);
+  border-color: var(--rojo-corazon);
+  box-shadow: 0 0 8px rgba(255, 45, 61, 0.5);
+}
+
+.acciones {
+  display: grid;
+  gap: 10px;
+}
+
+/* Lista de clientas */
+.buscador {
+  margin-bottom: 12px;
+}
+
+.lista {
+  list-style: none;
+  max-height: 380px;
+  overflow-y: auto;
+}
+
+.lista li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 2px;
+  border-bottom: 1px solid rgba(217, 164, 106, 0.15);
+  font-size: 0.85rem;
+}
+
+.lista li:last-child {
+  border-bottom: none;
+}
+
+.lista .info small {
+  display: block;
+  color: var(--texto-suave);
+  font-size: 0.75rem;
+}
+
+.lista .conteo {
+  white-space: nowrap;
+  color: var(--dorado);
+  font-weight: 500;
+}
+
+.lista li.vacio {
+  justify-content: center;
+  color: var(--texto-suave);
+}
+
+.resumen {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-bottom: 14px;
+  text-align: center;
+}
+
+.resumen div {
+  padding: 10px 4px;
+  border: 1px solid var(--borde);
+  border-radius: 12px;
+}
+
+.resumen b {
+  display: block;
+  font-family: var(--f-titulo);
+  font-size: 1.3rem;
+  color: var(--neon);
+}
+
+.resumen small {
+  font-size: 0.7rem;
+  color: var(--texto-suave);
+}
